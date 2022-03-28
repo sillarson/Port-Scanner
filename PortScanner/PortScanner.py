@@ -6,8 +6,12 @@ def tcp_scanner(port):
     A scanner that takes a parameter(port). 
     This parameter is the port being scanned.
     """
+
+
     #sock is the name of the socket object to connect to ports
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+
     #resolve IP from host name
     try:
         remote_server = input("Enter a remote host to scan: ")
@@ -16,6 +20,7 @@ def tcp_scanner(port):
         #if host name not resolved, print error message then exit
         print("Host name couldn't be resolved...")
         sys.exit()
+
 
     #basic port scanner
     try:
@@ -29,11 +34,14 @@ def tcp_scanner(port):
         print("Couldn\'t connect to server... ")
         sys.exit()
 
+
 def main():
     """
     The main class
     """
-    pass
+    for port in range(100):
+        tcp_scanner(port)
+
 
 if __name__ == '__main__':
     main()
