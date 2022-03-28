@@ -10,6 +10,10 @@ def tcp_scanner(port):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     try:
+        res = sock.connect_ex((remote_server_IP, port))
+        if res == 0:
+            print("Port {}: OPEN".format(port))
+        sock.close()
 
     except socket.error:
         #when encountering an error, print error message then exit
