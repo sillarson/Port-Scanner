@@ -20,6 +20,9 @@ def tcp_scanner(port):
         #if host name not resolved, print error message then exit
         print("Host name couldn't be resolved...")
         sys.exit()
+    except KeyboardInterrupt:
+        print("Exiting...")
+        sys.exit()
 
 
     #basic port scanner
@@ -39,9 +42,9 @@ def main():
     """
     The main class
     """
-    for port in range(100):
-        tcp_scanner(port)
+   
 
 
 if __name__ == '__main__':
-    main()
+    for port in range(100):
+        tcp_scanner(port)
