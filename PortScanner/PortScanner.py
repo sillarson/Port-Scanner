@@ -8,7 +8,16 @@ def tcp_scanner(port):
     """
     #sock is the name of the socket object to connect to ports
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    #resolve IP from host name
+    try:
+        remote_server = input("Enter a remote host to scan: ")
+        remote_server_IP = socket.gethostbyname(remote_server)
+    except socket.gaierror:
+        #if host name not resolved, print error message then exit
+        print("Host name couldn't be resolved...")
+        sys.exit()
 
+    #basic port scanner
     try:
         res = sock.connect_ex((remote_server_IP, port))
         if res == 0:
